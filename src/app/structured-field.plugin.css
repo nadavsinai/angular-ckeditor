@@ -1,0 +1,19 @@
+algotec-sf {
+  background: cyan;
+  display: inline;
+}
+
+algotec-sf:before {
+  content: '[';
+  color: red;
+  padding: 2px;
+}
+algotec-sf:after {
+  content: ']';
+  color: red;
+  padding: 2px;
+}
+
+.ck.ck-editor__editable .ck-widget .ck-widget__type-around__button {
+  display: none;
+}
