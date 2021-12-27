@@ -44,10 +44,7 @@
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "customWebpackConfig": {
-              "path": "webpack.config.js",
-              "mergeStrategies": {
-                "module.rules": "replace"
-              }
+              "path": "webpack.config.js"
             },
             "outputPath": "dist/angular-webcontainer-template",
             "index": "src/index.html",
