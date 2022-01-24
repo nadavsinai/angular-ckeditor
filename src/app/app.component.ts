@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import ClassicEditor from './ckeditor';
+import ClassicEditorExt from "./ckeditor";
 
 @Component({
     selector: 'app-root',
@@ -8,17 +9,13 @@ import ClassicEditor from './ckeditor';
     styles: [`p {
         font-family: Lato;
     }
-
-    ::ng-deep .ck-editor__editable {
-        min-height: 200px !important;
-    }`],
+    `],
 })
 export class AppComponent {
-    editor = ClassicEditor;
+    editor = ClassicEditorExt;
     data: any = `<p>Hello, world!!1!</p>`;
     config = {
         toolbar: [
-            'StructuredField',
             'undo',
             'redo',
             '|',
@@ -32,7 +29,13 @@ export class AppComponent {
             'fontColor',
             'fontBackgroundColor',
             'highlight',
+            '|',
             'StructuredField',
+            '|',
+            'blockQuote',
+            '|',
+            'StructuredFieldInline',
+            'findAndReplace'
         ],
         language: 'id',
         image: {

@@ -26,11 +26,15 @@
     "@ckeditor/ckeditor5-easy-image": "^31.1.0",
     "@ckeditor/ckeditor5-editor-classic": "^31.1.0",
     "@ckeditor/ckeditor5-essentials": "^31.1.0",
+    "@ckeditor/ckeditor5-find-and-replace": "^31.1.0",
     "@ckeditor/ckeditor5-heading": "^31.1.0",
+    "@ckeditor/ckeditor5-highlight": "^31.1.0",
     "@ckeditor/ckeditor5-image": "^31.1.0",
     "@ckeditor/ckeditor5-link": "^31.1.0",
     "@ckeditor/ckeditor5-list": "^31.1.0",
     "@ckeditor/ckeditor5-theme-lark": "^31.1.0",
+    "ckeditor5-build-mergefields": "^12.0.3",
+    "ckeditor5-placeholder": "^1.2.1",
     "rxjs": "^6.5.3",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
@@ -40,6 +44,7 @@
     "@angular/cli": "~12.0.4",
     "@angular/compiler-cli": "~12.0.4",
     "@ckeditor/ckeditor5-dev-utils": "^27.1.1",
+    "@ckeditor/ckeditor5-inspector": "^2.3.0",
     "@types/node": "^12.11.1",
     "postcss": "7.0.39",
     "typescript": "~4.2.3"

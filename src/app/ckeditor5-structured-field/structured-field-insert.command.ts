@@ -1,9 +1,9 @@
 import { ValueTransformer } from '@angular/compiler/src/util';
-import Command from '@ckeditor/ckeditor5-core/src/command';
+import {Command} from '@ckeditor/ckeditor5-core';
 import {CKEditor5} from "@ckeditor/ckeditor5-angular";
 import Editor = CKEditor5.Editor;
 
-export default class InsertStructuredFieldCommand extends Command {
+export  class InsertStructuredFieldCommand extends Command {
   private isEnabled: boolean;
   constructor(protected editor:Editor) {
     super(editor);
@@ -19,10 +19,10 @@ export default class InsertStructuredFieldCommand extends Command {
   refresh() {
     const model = this.editor.model;
     const selection = model.document.selection;
-    const allowedIn = model.schema.findAllowedParent(
-      selection.getFirstPosition(),
-      'StructuredField'
-    );
+    // const allowedIn = model.schema.findAllowedParent(
+    //   selection.getFirstPosition(),
+    //   'StructuredField'
+    // );
 
     this.isEnabled = true; //allowedIn !== null;
   }
@@ -30,15 +30,15 @@ export default class InsertStructuredFieldCommand extends Command {
 
 function createStructuredField(writer) {
   const structuredField = writer.createElement('StructuredField');
-  // const structuredFieldContent = writer.createElement('StructuredFieldContent');
-  // const simpleBoxDescription = writer.createElement( 'simpleBoxDescription' );
+  const structuredFieldContent = writer.createElement('StructuredFieldContent');
 
-  //writer.append(structuredFieldContent, structuredField);
-  // writer.append( simpleBoxDescription, simpleBox );
+
+  writer.append(structuredFieldContent, structuredField);
 
   // There must be at least one paragraph for the description to be editable.
   // See https://github.com/ckeditor/ckeditor5/issues/1464.
-  // writer.appendElement( 'paragraph', simpleBoxDescription );
-  writer.setSelection(structuredField, 'on');
+  writer.appendElement( 'paragraph', structuredFieldContent );
+  writer.insertText(" ", structuredFieldContent);
+  //writer.setSelection(structuredField, 'on');
   return structuredField;
 }

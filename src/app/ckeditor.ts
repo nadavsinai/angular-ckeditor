@@ -10,14 +10,25 @@ import {Link} from "@ckeditor/ckeditor5-link";
 import {List} from "@ckeditor/ckeditor5-list";
 import {Paragraph} from "@ckeditor/ckeditor5-paragraph";
 import {CloudServices} from "@ckeditor/ckeditor5-cloud-services";
-import StructuredFieldPlugin from "./structured-field.plugin";
+import {StructuredField} from "./ckeditor5-structured-field";
+import {StructuredFieldInline} from "./ckeditor5-structured-field-inline";
 import {CKEditor5} from "@ckeditor/ckeditor5-angular";
+import {CKEditorInspector} from '@ckeditor/ckeditor5-inspector';
+import {Highlight} from "@ckeditor/ckeditor5-highlight";
+import {FindAndReplace} from '@ckeditor/ckeditor5-find-and-replace';
+
 
 export default class ClassicEditorExt extends ClassicEditor implements CKEditor5.EditorConstructor {
     static builtinPlugins: any[];
 
     create(sourceElementOrData: HTMLElement | string, config?: CKEditor5.Config): Promise<CKEditor5.Editor> {
-        return super.create(sourceElementOrData, config);
+        return super.create(sourceElementOrData, config)
+            .then( editor => {
+                CKEditorInspector.attach( 'myEditor', editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
     }
 }
 
@@ -38,7 +49,11 @@ ClassicEditorExt.builtinPlugins = [
     Link,
     List,
     Paragraph,
-    StructuredFieldPlugin,
+    Highlight,
+    StructuredField,
+    StructuredFieldInline,
+    FindAndReplace,
+    BlockQuote,
 ];
 
 

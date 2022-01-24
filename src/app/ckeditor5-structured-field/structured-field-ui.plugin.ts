@@ -1,10 +1,10 @@
 import {Plugin} from '@ckeditor/ckeditor5-core';
-import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
-// import * as styles from './structured-field.plugin.css';
+import {ButtonView} from '@ckeditor/ckeditor5-ui';
+import './theme/structured-field.plugin.css';
 import {CKEditor5} from "@ckeditor/ckeditor5-angular";
 import Editor = CKEditor5.Editor;
 
-export default class StructuredFieldUI extends Plugin {
+export  class StructuredFieldUI extends Plugin {
     static get pluginName() {
         return 'StructuredFieldUI';
     }
@@ -16,10 +16,7 @@ export default class StructuredFieldUI extends Plugin {
         console.log('StructuredFieldUI got called');
         const t = this.editor.t;
         const editor = this.editor;
-        // css
-        // const styleElem = document.createElement('style');
-        // styleElem.innerHTML = Styles;
-        // document.head.append(styleElem);
+
 
         editor.ui.componentFactory.add('StructuredField', (local) => {
             const command = editor.commands.get('insertStructuredField');

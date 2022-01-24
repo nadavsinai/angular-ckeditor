@@ -1,8 +1,8 @@
 import { Plugin } from '@ckeditor/ckeditor5-core';
-import StructuredFieldEditing from './structured-field.editing.plugin';
-import StructuredFieldUI from './structured-field-ui.plugin';
+import {StructuredFieldEditing} from './structured-field.editing.plugin';
+import {StructuredFieldUI} from './structured-field-ui.plugin';
 
-export default class StructuredField extends Plugin {
+export  class StructuredField extends Plugin {
   static get pluginName() {
     return 'StructuredField';
   }

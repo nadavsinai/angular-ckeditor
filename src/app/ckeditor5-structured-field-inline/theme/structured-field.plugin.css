@@ -1,0 +1,41 @@
+algotec-sf-inline {
+  background: #F6D2C9;
+  display: inline;
+}
+
+algotec-sf-inline:before {
+  content: '[';
+  color: blue;
+  padding: 1px;
+}
+algotec-sf-inline:after {
+  content: ']';
+  color: blue;
+  padding: 1px;
+}
+
+.inline-sf {
+  background: #F6D2C9;
+  display: inline;
+}
+
+.inline-sf:before {
+  content: '[';
+  color: blue;
+  padding: 1px;
+}
+.inline-sf:after {
+  content: ']';
+  color: blue;
+  padding: 1px;
+}
+
+/*algotec-sf-inline-start {*/
+/*  content: '[';*/
+/*  color: blue;*/
+/*}*/
+/*algotec-sf-inline-end {*/
+/*  content: ']';*/
+/*  color: blue;*/
+/*}*/
+
