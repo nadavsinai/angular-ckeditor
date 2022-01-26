@@ -1,10 +1,8 @@
-import {Plugin} from '@ckeditor/ckeditor5-core';
+import {Plugin,Editor} from '@ckeditor/ckeditor5-core';
 import {InsertStructuredFieldInlineCommand} from './structured-field-inline-insert.command';
 
 import {toWidgetEditable, toWidget, viewToModelPositionOutsideModelElement} from '@ckeditor/ckeditor5-widget';
 import {Widget} from '@ckeditor/ckeditor5-widget';
-import {CKEditor5} from "@ckeditor/ckeditor5-angular";
-import Editor = CKEditor5.Editor;
 import Position from '@ckeditor/ckeditor5-engine/src/model/position';
 //import {viewToModelPosition} from '@ckeditor/ckeditor5-list/src/converters.js';
 

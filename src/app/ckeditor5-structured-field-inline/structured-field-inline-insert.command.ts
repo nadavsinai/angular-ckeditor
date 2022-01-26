@@ -1,12 +1,10 @@
 import { ValueTransformer } from '@angular/compiler/src/util';
-import {Command} from '@ckeditor/ckeditor5-core';
-import {CKEditor5} from "@ckeditor/ckeditor5-angular";
-import Editor = CKEditor5.Editor;
+import {Command,Editor} from '@ckeditor/ckeditor5-core';
 
 export  class InsertStructuredFieldInlineCommand extends Command {
-  private isEnabled: boolean;
+  public isEnabled: boolean;
   private fieldID = 0;
-  constructor(protected editor:Editor) {
+  constructor(public editor:Editor) {
     super(editor);
   }
   execute() {

@@ -17,7 +17,7 @@ algotec-sf .structured-field-content p {
   display:inline;
   padding:0;
 }
-algotec-sf .structured-field-content p:first-child br:first-child {
+algotec-sf .structured-field-content  br:first-child {
   display:none;
 }
 

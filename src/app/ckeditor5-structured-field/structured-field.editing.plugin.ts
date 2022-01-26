@@ -1,10 +1,7 @@
-import {Plugin} from '@ckeditor/ckeditor5-core';
+import {Plugin,Editor} from '@ckeditor/ckeditor5-core';
 import {InsertStructuredFieldCommand} from './structured-field-insert.command';
-
 import {toWidgetEditable, toWidget} from '@ckeditor/ckeditor5-widget';
 import {Widget} from '@ckeditor/ckeditor5-widget';
-import {CKEditor5} from "@ckeditor/ckeditor5-angular";
-import Editor = CKEditor5.Editor;
 
 export class StructuredFieldEditing extends Plugin {
   editor:Editor;
@@ -33,10 +30,9 @@ export class StructuredFieldEditing extends Plugin {
       isObject: true,
       isInline: true,
       isLimit: false,
-      allowWhere: '$text',
+      allowWhere: '$block',
       //allowContentOf: '$text',
-      //allowAttributesOf: '$text',
-      allowAttributes: [ 'name' ]
+      //allowAttributesOf: '$text'
     });
     schema.register('StructuredFieldContent', {
       // Cannot be split or left by the caret.
@@ -44,7 +40,7 @@ export class StructuredFieldEditing extends Plugin {
       isInline: true,
       allowIn: 'StructuredField',
       // Allow content which is allowed in the root (e.g. paragraphs).
-      allowContentOf: '$root',
+      allowContentOf: '$block',
     });
   }
 
@@ -70,11 +66,15 @@ export class StructuredFieldEditing extends Plugin {
     });
     conversion.for('editingDowncast').elementToElement({
       model: 'StructuredField',
-      view: (modelElement, {writer: viewWriter}) => {
-        const section = viewWriter.createContainerElement('algotec-sf', {
+      view: (modelElement, {writer: writer}) => {
+        const section = writer.createContainerElement('algotec-sf', {
           class: 'structured-field'
         });
-        return toWidget(section, viewWriter, {label: 'SF widget'})
+        writer.setAttribute( 'contenteditable', 'false', section );
+        writer.addClass( 'ck-widget', section );
+        writer.setCustomProperty( 'widget', true, section );
+
+        return section; //toWidget(section, viewWriter, {label: 'SF widget'})
       },
     });
 
@@ -99,9 +99,19 @@ export class StructuredFieldEditing extends Plugin {
       model: 'StructuredFieldContent',
       view: (modelElement, {writer: viewWriter}) => {
         // Note: You use a more specialized createEditableElement() method here.
-        const div = viewWriter.createEditableElement('span', {class: 'structured-field-content'});
+        const span = viewWriter.createEditableElement('span', {class: 'structured-field-content'});
+        // Set initial contenteditable value.
+        viewWriter.setAttribute( 'contenteditable', viewWriter.document.isReadOnly ? 'false' : 'true', span );
+        viewWriter.addClass( [ 'ck-editor__editable', 'ck-editor__nested-editable' ], span );
 
-        return toWidgetEditable(div, viewWriter);
+        span.on( 'change:isFocused', ( evt, property, is ) => {
+          if ( is ) {
+            viewWriter.addClass( 'ck-editor__nested-editable_focused', span );
+          } else {
+            viewWriter.removeClass( 'ck-editor__nested-editable_focused', span );
+          }
+        } );
+        return span // toWidgetEditable(div, viewWriter);
       }
     });
     // -----------

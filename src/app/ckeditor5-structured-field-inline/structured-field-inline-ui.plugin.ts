@@ -1,14 +1,13 @@
-import {Plugin} from '@ckeditor/ckeditor5-core';
+import {Plugin,Editor} from '@ckeditor/ckeditor5-core';
 import {ButtonView} from '@ckeditor/ckeditor5-ui';
 import './theme/structured-field.plugin.css';
-import {CKEditor5} from "@ckeditor/ckeditor5-angular";
-import Editor = CKEditor5.Editor;
+import {EditorWithUI} from "@ckeditor/ckeditor5-core/src/editor/editorwithui";
 
 export  class StructuredFieldInlineUI extends Plugin {
     static get pluginName() {
         return 'StructuredFieldInlineUI';
     }
-    constructor(protected editor:Editor) {
+    constructor(public editor:EditorWithUI) {
       super(editor);
     }
 
@@ -28,7 +27,8 @@ export  class StructuredFieldInlineUI extends Plugin {
                 toolTip: true,
             });
             // Bind the state of the button to the command.
-            buttonView.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled');
+            buttonView.bind('isOn').to(command, 'value');
+            buttonView.bind( 'isEnabled').to(command, 'isEnabled');
 
             // Execute the command when the button is clicked (executed).
             this.listenTo(buttonView, 'execute', () =>
@@ -39,7 +39,4 @@ export  class StructuredFieldInlineUI extends Plugin {
         });
     }
 
-    listenTo(buttonView: any, arg1: string, arg2: () => any) {
-        return super.listenTo(buttonView, arg1, arg2)
-    }
 }

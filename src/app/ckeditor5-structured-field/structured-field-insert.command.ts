@@ -1,11 +1,9 @@
 import { ValueTransformer } from '@angular/compiler/src/util';
-import {Command} from '@ckeditor/ckeditor5-core';
-import {CKEditor5} from "@ckeditor/ckeditor5-angular";
-import Editor = CKEditor5.Editor;
+import {Command,Editor} from '@ckeditor/ckeditor5-core';
 
-export  class InsertStructuredFieldCommand extends Command {
-  private isEnabled: boolean;
-  constructor(protected editor:Editor) {
+export class InsertStructuredFieldCommand extends Command {
+  public isEnabled: boolean;
+  constructor(public editor:Editor) {
     super(editor);
   }
   execute() {
@@ -38,7 +36,7 @@ function createStructuredField(writer) {
   // There must be at least one paragraph for the description to be editable.
   // See https://github.com/ckeditor/ckeditor5/issues/1464.
   writer.appendElement( 'paragraph', structuredFieldContent );
-  writer.insertText(" ", structuredFieldContent);
+  // writer.insertText(" ", structuredFieldContent);
   //writer.setSelection(structuredField, 'on');
   return structuredField;
 }

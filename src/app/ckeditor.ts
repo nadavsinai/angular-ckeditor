@@ -1,3 +1,4 @@
+// @ts-ignore
 import {ClassicEditor} from "@ckeditor/ckeditor5-editor-classic";
 import {Essentials} from "@ckeditor/ckeditor5-essentials";
 import {Autoformat} from "@ckeditor/ckeditor5-autoformat";
@@ -12,24 +13,21 @@ import {Paragraph} from "@ckeditor/ckeditor5-paragraph";
 import {CloudServices} from "@ckeditor/ckeditor5-cloud-services";
 import {StructuredField} from "./ckeditor5-structured-field";
 import {StructuredFieldInline} from "./ckeditor5-structured-field-inline";
-import {CKEditor5} from "@ckeditor/ckeditor5-angular";
-import  * as CKEditorInspector from '@ckeditor/ckeditor5-inspector';
+import * as CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 import {Highlight} from "@ckeditor/ckeditor5-highlight";
 import {FindAndReplace} from '@ckeditor/ckeditor5-find-and-replace';
+import {EditorConfig} from "@ckeditor/ckeditor5-core/src/editor/editorconfig";
 
 
 export default class ClassicEditorExt extends ClassicEditor {
     static builtinPlugins: any[];
 
-    static create(sourceElementOrData: HTMLElement | string, config?: CKEditor5.Config): Promise<CKEditor5.Editor> {
+    static create(sourceElementOrData: HTMLElement | string, config?: EditorConfig): Promise<ClassicEditorExt> {
         return super.create(sourceElementOrData, config)
-            .then( editor => {
-                CKEditorInspector.attach( 'myEditor', editor );
+            .then(editor => {
+                CKEditorInspector.attach('myEditor', editor);
                 return editor;
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+            })
     }
 }
 
