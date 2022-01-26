@@ -17,6 +17,7 @@ import * as CKEditorInspector from '@ckeditor/ckeditor5-inspector';
 import {Highlight} from "@ckeditor/ckeditor5-highlight";
 import {FindAndReplace} from '@ckeditor/ckeditor5-find-and-replace';
 import {EditorConfig} from "@ckeditor/ckeditor5-core/src/editor/editorconfig";
+import {StructuredFieldMarker} from "./ckeditor5-structured-field-markers";
 
 
 export default class ClassicEditorExt extends ClassicEditor {
@@ -53,6 +54,7 @@ ClassicEditorExt.builtinPlugins = [
     StructuredFieldInline,
     FindAndReplace,
     BlockQuote,
+    StructuredFieldMarker
 ];
 
 

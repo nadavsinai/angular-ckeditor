@@ -35,7 +35,8 @@ export class AppComponent {
             'blockQuote',
             '|',
             'StructuredFieldInline',
-            'findAndReplace'
+            'findAndReplace',
+            'StructuredFieldMarker'
         ],
         language: 'id',
         image: {
