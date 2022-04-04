@@ -13,7 +13,7 @@ import ClassicEditorExt from "./ckeditor";
 })
 export class AppComponent {
     editor = ClassicEditorExt;
-    data: any = `<p>Hello, world!!1!</p>`;
+    data: any = `<p>Hello, <algotec-sf-start></algotec-sf-start><sf-start name="id-0" data='{"key": "value"}'></sf-start>world<sf-end name="id-0"></sf-end><algotec-sf-end></algotec-sf-end>!!1!</p>`;
     config = {
         toolbar: [
             'undo',

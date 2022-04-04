@@ -1,0 +1,31 @@
+sf-marker-highlight {
+    background: #eeb0f2;
+    display: inline;
+}
+
+.sf-marker-highlight {
+    background: hsl(60, 100%, 50%);
+    color: var(--ck-color-text);
+}
+
+.sf-marker-highlight_selected {
+    background: hsl(29, 100%, 60%);
+}
+algotec-sf-start br {
+    display: none;
+}
+algotec-sf-end br {
+    display: none;
+}
+
+algotec-sf-start:before {
+
+    content: '[';
+    color: red;
+    display:inline;
+}
+algotec-sf-end:before {
+    content: ']';
+    color: red;
+    display:inline;
+}
